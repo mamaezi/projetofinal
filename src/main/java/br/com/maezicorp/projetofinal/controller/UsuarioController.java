@@ -18,11 +18,8 @@ import br.com.maezicorp.projetofinal.model.Usuario;
 @RestController
 @CrossOrigin("*")
 public class UsuarioController {
-	
-//
 
 @Autowired
-
 private UsuarioDAO dao;
 
 // mapeia todos os usuarios
@@ -66,34 +63,27 @@ return null;
 // metodo inicial
 @PostMapping ("/login")
 public ResponseEntity<Usuario> login (@RequestBody Usuario dadosLogin){
-	Usuario resultado = dao.findByEmail(dadosLogin.getEmail());
-	
+	//Usuario resultado = dao.findByEmail(dadosLogin.getEmail());
+	//Usuario racf = dao.findByRacf(dadosLogin.getRacf());
+	//Usuario funcional = dao.findByFuncional(dadosLogin.getFuncional());
+
+	Usuario resultado =  dao.findByEmailOrRacfOrFuncional(dadosLogin.getEmail(),dadosLogin.getRacf(), dadosLogin.getFuncional());
+
 if (resultado !=null)
 {
 	if (resultado.getSenha().equals(dadosLogin.getSenha())) {
-
+		resultado.setSenha("************");
 		return ResponseEntity.ok(resultado);
-
 	}
-
 	else {
-
 		// se as senhas não conferem, significa que o usuário existe, porém a senha está errada
-
 		return ResponseEntity.status(401).build(); // retorna o código 401 - Unauthorized
-
 	}
-
-	
-
 }
-
 else {
-
 	// se não encontrei, retorna um código de NOT FOUND (404)
-
 	return ResponseEntity.notFound().build();
 
-}
+	}
 }
 }

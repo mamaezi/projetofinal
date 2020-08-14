@@ -1,8 +1,10 @@
 package br.com.maezicorp.projetofinal.model;
 
 
-import java.util.Calendar;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
+//import java.util.Calendar;
+//import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,8 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+//import javax.persistence.Temporal;
+//import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -38,14 +40,14 @@ public class Agendamento {
 	private String celularCliente;
 	
 	@Column (name="data_agendamento")
-	@Temporal(TemporalType.DATE)
+	//@Temporal(TemporalType.DATE)
 	@JsonFormat(pattern="dd/MM/yyyy")
-	private Calendar dataAgendamento;
+	private LocalDate dataAgendamento;
 	
 	@Column (name="hora_agendamento")
-	@Temporal(TemporalType.TIME)
+	//@Temporal(TemporalType.TIME)
 	@JsonFormat(pattern="HH:mm", shape=JsonFormat.Shape.STRING, timezone="America/Sao_Paulo")
-	private Date horaAgendamento;
+	private LocalTime horaAgendamento;
 	
 	@Column (name="observacao", length=255)
 	private String observacao;
@@ -97,19 +99,19 @@ public class Agendamento {
 		this.celularCliente = celularCliente;
 	}
 
-	public Calendar getDataAgendamento() {
+	public LocalDate getDataAgendamento() {
 		return dataAgendamento;
 	}
 
-	public void setDataAgendamento(Calendar dataAgendamento) {
+	public void setDataAgendamento(LocalDate dataAgendamento) {
 		this.dataAgendamento = dataAgendamento;
 	}
 
-	public Date getHoraAgendamento() {
+	public LocalTime getHoraAgendamento() {
 		return horaAgendamento;
 	}
 
-	public void setHoraAgendamento(Date horaAgendamento) {
+	public void setHoraAgendamento(LocalTime horaAgendamento) {
 		this.horaAgendamento = horaAgendamento;
 	}
 

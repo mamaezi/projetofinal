@@ -102,5 +102,9 @@ public class Usuario {
 				+ ", funcional=" + funcional + "]";
 
 	}
+	public Object getRackf() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

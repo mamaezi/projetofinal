@@ -17,4 +17,11 @@ import br.com.maezicorp.projetofinal.model.Usuario;
 	 
 	 public Usuario findByEmail(String email);
 
+	public Usuario findByFuncional(int funcional);
+
+	public Usuario findByRacf(String racf);
+
+	public Usuario findByEmailOrRacfOrFuncional(String email,String racf, int funcional);
+
+
 }
